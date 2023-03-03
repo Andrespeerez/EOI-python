@@ -1,13 +1,13 @@
 """
 Mostrar tabla de multiplicar del número indicado por el usuario
-Resolver con un for y también con un while
+Resolver con un **for** y también con un **while**
 """
 
 print("Dame un número entero:")
-numero = input()
+entrada = input()
 
 try:
-    numero = int(numero)
+    numero = int(entrada)
 except:
     print("Introduce un número")
     exit()

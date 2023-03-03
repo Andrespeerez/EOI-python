@@ -14,7 +14,7 @@ horatomin = 60 # min
 kmtometro = 1000 # metro
 
 # entrada
-print("¿Que velocidad tiene? (en metro/min)")
+print("¿Que velocidad tienes? (en metro/min)")
 try: 
     entrada = float(input())
 except:
@@ -26,9 +26,9 @@ except:
 salida  ----- = entrada ----- * ---------- * ------  
         hora            min     1000 metro    hora
 """
-conv = horatomin / kmtometro
+fConv = horatomin / kmtometro
 
-velocidad = float(entrada) * conv
+velocidad = float(entrada) * fConv
 
 if (float(velocidad) > 75):
     print(f"Llevas una velocidad de {velocidad} km/h\nTu velocidad es Alta")
