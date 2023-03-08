@@ -24,7 +24,7 @@ operaciones = ["sum", "res", "mul", "div"]
 num1 = 2
 num2 = 3
 for ii in operaciones:
-    print(calcular(num1,num2,ii))
+    print(calcular(num1, num2, ii))
 
 print("\nManejar excepcion:")
 print(calcular(num1, 0,"div"))
