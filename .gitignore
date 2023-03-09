@@ -354,3 +354,6 @@ MigrationBackup/
 
 # entorno python
 .venv/
+
+# mongoDB
+04-bases-de-datos/conexion.py
