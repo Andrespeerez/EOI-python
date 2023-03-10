@@ -7,7 +7,7 @@ import json
 from conexion import MONGO_URI 
 
 # Establecemos la conexion con el servidor
-MONGO_URI = "mongodb://host-mongodb-eoi.northeurope.cloudapp.azure.com:27017"
+MONGO_URI="mongodb://localhost:27017"
 client = MongoClient(MONGO_URI)
 
 # listar los nombres de las bases de datos

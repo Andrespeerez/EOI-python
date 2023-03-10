@@ -10,6 +10,7 @@ MONGO_URI = ""
 """
 # Creamos el objeto que representa el cliente para trabajar con la base de datos
 # Se requiere la cadena de conexion
+MONGO_URI="mongodb://localhost:27017"
 client = MongoClient(MONGO_URI)
 
 # Mostrar el estado del servidor
