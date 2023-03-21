@@ -17,6 +17,7 @@ urlLogin = f"https://openapi.emtmadrid.es/v1/mobilitylabs/user/login/"
 
 try:
     response = requests.get(urlLogin, headers=loginHeader)
+    print(response.status_code, response.reason)
     print()
     if(response.status_code == 200):
         data = response.json()
@@ -25,8 +26,7 @@ try:
 except:
     print(f"Error :  {response.reason}")
 
-input_parada = input("Parada:  ")
-urlBusStop = f"https://openapi.emtmadrid.es/v2/transport/busemtmad/stops/{input_parada}/arrives"
+url_parking_availability = f"https://openapi.emtmadrid.es/v1/citymad/places/parkings/availability"
 
 tokenHeader = {
     "accessToken" : token
@@ -34,27 +34,20 @@ tokenHeader = {
 
 print(token)
 
-
-
-myBody = {
-    "cultureInfo":"ES",
-    "Text_StopRequired_YN":"Y",
-    "Text_EstimationsRequired_YN":"Y",
-    "Text_IncidencesRequired_YN":"N",
-    "DateTime_Referenced_Incidencies_YYYYMMDD":"20230316"
-}
-
-myBody_json = json.dumps(myBody)
-
-
 try:
-    response = requests.post(urlBusStop, headers=tokenHeader, data=myBody_json)
+    response = requests.get(url_parking_availability, headers=tokenHeader)
     print(response.status_code, response.reason)
     if(response.status_code == 200):
         data = response.json()
-        for ii in data['data'][0]['Arrive']:
-            print(f"Bus {ii['bus']} llega a parada {ii['stop']} en {ii['estimateArrive']:<5} segundos")
-            
 
 except:
-    print(f"Error : busStop")
+    print(f"Error : Parking")
+
+print()
+# filter() para guardar los parking que tienen valores numéricos
+parking = filter(lambda x : x['freeParking'] != None, data['data'])
+
+# usamos sum() y map() para calcular el total de plazas libres
+free_parking = sum(map(lambda cosas : cosas['freeParking'], parking))
+
+print(f"# de plazas libres totales :  {free_parking}")
